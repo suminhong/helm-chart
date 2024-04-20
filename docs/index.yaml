@@ -1,0 +1,26 @@
+apiVersion: v1
+entries:
+  ingress-nginx-external-lb:
+  - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2024-04-20T16:41:02.081836+09:00"
+    description: Ingress controller for Kubernetes using NGINX as a reverse proxy
+      and load balancer with External AWS LB
+    digest: ea07170584d96db96d3f7201c7ed57031780519ef94b3175e844a5143266d6f3
+    home: https://suminhong.github.io/helm-chart/ingress-nginx-external-lb/
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    - nodePort
+    - externalLB
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - name: suminhong
+    name: ingress-nginx-external-lb
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    urls:
+    - https://suminhong.github.io/helm-chart/ingress-nginx-external-lb-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-04-20T16:41:02.07891+09:00"
