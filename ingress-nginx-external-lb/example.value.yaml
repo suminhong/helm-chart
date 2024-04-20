@@ -1,0 +1,81 @@
+commonLabels:
+  tags.honglab/service: ingress-nginx
+  tags.honglab/team: devops
+  tags.honglab/env: prod
+
+controller:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 15
+    targetCPUUtilizationPercentage: 40
+    targetMemoryUtilizationPercentage: null
+
+  resources:
+    requests:
+      cpu: 1
+      memory: 512Mi
+
+  # for zero-downtime
+  minReadySeconds: 30
+  terminationGracePeriodSeconds: 40
+  extraArgs:
+    shutdown-grace-period: 30
+    # for external-dns
+    publish-status-address: <dns-to-lb>
+  
+  extraEnvs:
+    - name: TZ
+      value: Asia/Seoul
+  
+  # prometheus metric 수집 설정
+  # https://kubernetes.github.io/ingress-nginx/user-guide/monitoring/
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: prometheus
+  podAnnotations:
+    prometheus.io/port: "10254"
+    prometheus.io/scrape: "true"
+
+  config:
+    use-proxy-protocol: "true"
+    use-forwarded-headers: "true"
+    enable-cors: "false"
+  
+  # ingress에 Annotation 붙여쓸 수 있도록 설정
+  allowSnippetAnnotations: true
+
+  nodeSelector:
+    kubernetes.io/os: linux
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/instance: ingress-nginx
+
+  service:
+    enabled: true
+    enableHttp: true
+    enableHttps: true
+    type: NodePort
+    targetPorts:
+      http: http
+      https: http
+    nodePorts:
+      http: 30004
+      https: null
+    
+    # controller.service.type이 NodePort인 경우만 구성 가능
+    targetGroupBinding:
+      create: true
+      arnMapping:
+        http: <arn-to-targetGroup>
+        https: <arn-to-targetGroup>
+
+    # NodePort 타입에서는 Cluster Policy 필요
+    externalTrafficPolicy: "Cluster"
