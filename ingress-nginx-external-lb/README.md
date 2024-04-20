@@ -11,7 +11,7 @@ Kubernetes: `>=1.20.0-0`
 
 ## Get Repo Info
 
-```console
+```bash
 helm repo add suminhong https://suminhong.github.io/helm-chart
 helm repo update
 ```
@@ -20,14 +20,12 @@ helm repo update
 
 **Important:** only helm3 is supported
 
-```console
+```bash
 helm install [RELEASE_NAME] suminhong/ingress-nginx-external-lb
 ```
 
-The command deploys ingress-nginx on the Kubernetes cluster in the default configuration.
-
 ## Example
-```console
+```yaml
 controller:
   extraArgs:
     # for external-dns
