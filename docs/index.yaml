@@ -21,6 +21,6 @@ entries:
     sources:
     - https://github.com/kubernetes/ingress-nginx
     urls:
-    - https://suminhong.github.io/helm-chart/ingress-nginx-external-lb-1.0.0.tgz
+    - https://suminhong.github.io/helm-chart/docs/ingress-nginx-external-lb-1.0.0.tgz
     version: 1.0.0
 generated: "2024-04-20T16:41:02.07891+09:00"
