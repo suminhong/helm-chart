@@ -4,18 +4,18 @@ annotations:
 apiVersion: v2
 appVersion: 1.10.0
 description: Ingress controller for Kubernetes using NGINX as a reverse proxy and
-  load balancer
+  load balancer with External AWS LB
 home: https://github.com/kubernetes/ingress-nginx
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
 keywords:
 - ingress
 - nginx
+- nodePort
+- externalLB
 kubeVersion: '>=1.20.0-0'
 maintainers:
-- name: rikatz
-- name: strongjz
-- name: tao12345666333
-name: ingress-nginx
+- name: suminhong
+name: ingress-nginx-external-lb
 sources:
-- https://github.com/kubernetes/ingress-nginx
-version: 4.10.0
+- https://github.com/suminhong/helm-chart/tree/main/ingress-nginx-external-lb
+version: 1.0.0
