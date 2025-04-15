@@ -3,7 +3,7 @@ entries:
   ingress-nginx-external-lb:
   - apiVersion: v2
     appVersion: 1.10.0
-    created: "2024-04-20T17:16:41.107144+09:00"
+    created: "2025-04-16T00:51:14.666365+09:00"
     description: Ingress controller for Kubernetes using NGINX as a reverse proxy
       and load balancer with External AWS LB
     digest: 9087097f22a6261f15765c713ea045db97dfd1d715b4d208d8c845412bde96c2
@@ -21,6 +21,17 @@ entries:
     sources:
     - https://github.com/kubernetes/ingress-nginx
     urls:
-    - https://suminhong.github.io/helm-chart/pkg/ingress-nginx-external-lb-1.0.0.tgz
+    - pkg/ingress-nginx-external-lb-1.0.0.tgz
     version: 1.0.0
-generated: "2024-04-20T17:16:41.10464+09:00"
+  slack-emoji-maker:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2025-04-16T00:51:14.666496+09:00"
+    description: A Helm chart for Slack Emoji Maker web application
+    digest: 7890a750a125395ecc3f7d4d56d025d26e27019c4733437bf3dba81eb555d8b8
+    name: slack-emoji-maker
+    type: application
+    urls:
+    - pkg/slack-emoji-maker-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-04-16T00:51:14.664765+09:00"
